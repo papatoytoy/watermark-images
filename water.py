@@ -27,8 +27,9 @@ def usage():
     print(" -----------------------------------------------------------------")
 
 def get_position(logo,image,pos):
+
     if pos == "topleft": return (0,0)
-    if pos == "bottomleft": return (0, imge.size[1] - logo.size[1])
+    if pos == "bottomleft": return (0, image.size[1] - logo.size[1])
     if pos == "topright": return (image.size[0] - logo.size[0] ,0)
     if pos == "bottomright": return (image.size[0] - logo.size[0] , image.size[1] - logo.size[1])
     if pos == "center": return ( (image.size[0] - logo.size[0])/2 ,( image.size[1] - logo.size[1])/2 )
@@ -48,17 +49,21 @@ def watermark_logo_images(i,o,l,p):
     for file in files:
          if any(file.endswith(ext) for ext in extenstions):
              watermark_logo_image(i + '/' + file, o + '/' + file, l, p)
-             print "Processing %s %d of %d" %(file, count,len(files))
+             print("Processing %s %d of %d" %(file, count,len(files)))
              count+=1
 
 
 if(len(sys.argv) < 4): 
+    #print(len(sys.argv))
     usage()
+
 else: 
     try:
+        #for i in range(len(sys.argv)):
+        #    print(sys.argv[i])
         load_args()
-        print "Watermark successfully added"
+        print("Watermark successfully added") 
     except Exception: 
-        print "Error, please read 'Usage'" 
+        print("Error, please read 'Usage'" )
         usage()
-        print "Error, please read 'Usage'" 
+        print ("Error, please read 'Usage'" )
